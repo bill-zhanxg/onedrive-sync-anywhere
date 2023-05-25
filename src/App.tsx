@@ -1,37 +1,59 @@
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { invoke } from '@tauri-apps/api';
-import { useState } from 'react';
+import { appWindow } from '@tauri-apps/api/window';
+import { useRef, useState } from 'react';
+
 import './App.css';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import './Titlebar.css';
 
 function App() {
-	const [count, setCount] = useState(0);
+	invoke('greet', { name: 'World' })
+		.then((response) => console.log(response))
+		.catch(() => null);
+
+	initializeIcons();
+	const Minimize = () => <Icon iconName="ChromeMinimize" />;
+	const Stop = () => <Icon iconName="Stop" />;
+	const Restore = () => <Icon iconName="ChromeRestore" />;
+	const Close = () => <Icon iconName="ChromeClose" />;
+	const [maximized, setMaximized] = useState(false);
+	const titlebar = useRef<HTMLDivElement>(null);
+	const lastButton = useRef<HTMLDivElement>(null);
+	const content = useRef<HTMLDivElement>(null);
+
+	appWindow.listen('tauri://resize', () => {
+		appWindow
+			.isMaximized()
+			.then((maximized) => {
+				setMaximized(maximized);
+				[titlebar, content, lastButton].forEach((ref) => {
+					if (ref.current) ref.current.style.borderRadius = maximized ? '0' : '';
+				});
+			})
+			.catch(() => null);
+	});
 
 	return (
 		<>
-			<div>
-				<a href="https://vitejs.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
+			<div data-tauri-drag-region className="titlebar" ref={titlebar}>
+				<div className="titlebar-title">
+					<img src="/onedrive-sync-anywhere.png" alt="OneDrive Sync Anywhere" width={20} />
+					<p>OneDrive Sync Anywhere</p>
+				</div>
+				<div className="titlebar-buttons">
+					<div className="titlebar-button" onClick={() => appWindow.minimize()}>
+						<Minimize />
+					</div>
+					<div className="titlebar-button" onClick={() => appWindow.toggleMaximize()}>
+						{maximized ? <Restore /> : <Stop />}
+					</div>
+					<div className="titlebar-button" ref={lastButton} onClick={() => appWindow.close()}>
+						<Close />
+					</div>
+				</div>
 			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button
-					onClick={() => {
-						setCount((count) => count + 1);
-						invoke('greet', { name: 'World' }).then((response) => console.log(response));
-					}}
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">Hello World</p>
+			<div className="content" ref={content}></div>
 		</>
 	);
 }
