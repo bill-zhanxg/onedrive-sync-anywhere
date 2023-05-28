@@ -11,9 +11,9 @@
     "preview": "vite preview --port 5173"
   },
   "dependencies": {
-    "@fluentui/font-icons-mdl2": "^8.5.17",
     "@fluentui/react": "^8.109.5",
     "@fluentui/react-components": "^9.20.2",
+    "@fluentui/react-icons-mdl2": "^1.3.42",
     "@tauri-apps/api": "^1.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

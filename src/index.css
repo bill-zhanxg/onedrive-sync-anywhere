@@ -1,14 +1,29 @@
 :root {
 	--background-color: #f3f3f3fa;
+	--button-hover-color: #c2c2c2;
+	--font-color: #000000;
+	--titlebar-unfocused-color: #ababab;
+	--titlebar-close-button-background-color: #e81123;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #1d2026;
+		--button-hover-color: #2d2d2d;
+		--font-color: #ffffff;
+		--titlebar-unfocused-color: #565656;
+	}
 }
 
 html {
 	height: calc(100% - 40px);
 	width: 100%;
+	color: var(--font-color);
+	overflow: hidden;
 }
 
 body {
-  font-family: "Segoe UI";
+	font-family: 'Segoe UI';
 	height: 100%;
 	margin: 0;
 	margin-top: 40px;
