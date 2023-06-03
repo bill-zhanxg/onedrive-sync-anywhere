@@ -1,6 +1,6 @@
 # Onedrive Sync Anywhere
 
-This app allows the user to sync files outside the OneDrive folder by creating a Directory Junction
+This app allows the user to sync files outside the OneDrive folder by creating a Directory Junction, allowing seamless synchronization and easy access to specific files with OneDrive.
 
 ## Goals
 

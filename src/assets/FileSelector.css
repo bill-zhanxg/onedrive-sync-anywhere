@@ -1,0 +1,26 @@
+.dir-inputs {
+    width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.dir-inputs div {
+    width: 100%;
+}
+
+.dir-inputs button {
+    min-width: 130px;
+}
+
+@media screen and (max-width: 600px) {
+	.dir-inputs {
+		flex-direction: column;
+	}
+
+    .dir-inputs button {
+        width: 100%;
+        min-width: 250px;
+	}
+}

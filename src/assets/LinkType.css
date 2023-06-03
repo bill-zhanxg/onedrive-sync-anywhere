@@ -1,0 +1,13 @@
+.link-type,
+.tablist {
+	width: 100%;
+}
+
+.tablist {
+	display: flex;
+	justify-content: space-between;
+}
+
+.tablist button {
+	width: 50%;
+}
