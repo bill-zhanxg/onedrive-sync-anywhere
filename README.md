@@ -8,6 +8,7 @@ This app allows the user to sync files outside the OneDrive folder by creating a
 - [x] Learn Rust
 - [x] Learn Tauri
 - [x] Make the app work
+- [x] Add CLI support: use `onedrive-sync-anywhere.exe --help` for more info where `onedrive-sync-anywhere.exe` is the file name
 
 ## Things I wish I did
 
