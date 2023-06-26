@@ -21,7 +21,7 @@
 	font-weight: bold;
 }
 
-@media screen and (max-height: 400px) {
+@media screen and (max-height: 500px) {
 	.main-description {
 		display: none;
 	}

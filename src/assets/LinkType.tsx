@@ -7,13 +7,22 @@ import './LinkType.css';
 initializeIcons();
 const AdminIcon = () => <Icon iconName="Admin" />;
 
-function LinkType() {
+function LinkType({ setHardLink }: { setHardLink: React.Dispatch<React.SetStateAction<boolean>> }) {
 	return (
 		<div className="link-type">
-			<TabList className="tablist" appearance="subtle" defaultSelectedValue="hard" size="small">
+			<TabList
+				className="tablist"
+				appearance="subtle"
+				defaultSelectedValue="hard"
+				size="small"
+				onTabSelect={(_, data) => {
+					if (data.value === 'hard') setHardLink(true);
+					else if (data.value === 'soft') setHardLink(false);
+				}}
+			>
 				<Tooltip
 					content={
-						"A hard link is a file system feature that allows multiple names to refer to the same file data on disk. It's like creating shortcuts to a file, but renaming or moving the original file does not affect the hard link. The hard link remains intact and still points to the correct file data, providing flexibility and convenience in managing files."
+						"A hard link is a file system feature that allows multiple names to refer to the same file data on disk. It's like creating shortcuts to a file, but renaming or moving the original file does not affect the hard link. The hard link remains intact and still points to the correct file data, providing flexibility and convenience in managing files. Can only be on the same drive for files."
 					}
 					relationship="description"
 				>

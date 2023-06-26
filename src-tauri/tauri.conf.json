@@ -7,7 +7,7 @@
 		"distDir": "../dist"
 	},
 	"package": {
-		"productName": "onedrive-sync-anywhere",
+		"productName": "Onedrive Sync Anywhere",
 		"version": "0.1.0"
 	},
 	"tauri": {
@@ -23,24 +23,19 @@
 				"startDragging": true
 			},
 			"dialog": {
-				"all": false,
-				"ask": false,
-				"confirm": false,
-				"message": false,
-				"open": true,
-				"save": false
+				"open": true
 			}
 		},
 		"bundle": {
 			"active": true,
-			"category": "DeveloperTool",
+			"category": "Utility",
 			"copyright": "",
 			"deb": {
 				"depends": []
 			},
 			"externalBin": [],
 			"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
-			"identifier": "com.bill-zhanxg",
+			"identifier": "com.bill-zhanxg.onedrive-sync-anywhere",
 			"longDescription": "This app allows the user to sync files outside the OneDrive folder by creating a Directory Junction",
 			"macOS": {
 				"entitlements": null,
@@ -51,7 +46,7 @@
 			},
 			"resources": [],
 			"shortDescription": "Allows the user to sync files outside the OneDrive folder by creating a shortcut",
-			"targets": "all",
+			"targets": ["msi", "nsis"],
 			"windows": {
 				"certificateThumbprint": null,
 				"digestAlgorithm": "sha256",
@@ -68,9 +63,11 @@
 			{
 				"fullscreen": false,
 				"resizable": true,
-				"title": "Onedrive Sync Anywhere",
+				"title": "OneDrive Sync Anywhere",
 				"decorations": false,
-				"transparent": true
+				"transparent": true,
+				"minWidth": 400,
+				"minHeight": 400
 			}
 		]
 	}
