@@ -20,3 +20,4 @@ This app allows the user to sync files outside the OneDrive folder by creating a
 - Run `npm install` to install all required dependencies
 - All scripts can be found in `package.json`
 - Refer to [Tauri's documentation](https://tauri.app/v1/guides/) for more information
+- Common commands: `npm run tauri dev` to run the app in development mode, `npm run tauri build` to build the app
